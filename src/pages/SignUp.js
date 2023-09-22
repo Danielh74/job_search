@@ -14,6 +14,7 @@ function SignUp() {
     const nav = useNavigate();
     const [loading, setLoading] = useState(false);
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$!#%*?&]{8,}$/;
+    const [verifyPassword, setVerifyPassword] = useState("");
     const [showPassword, setShowPassword] = useState("password");
     const [formData, setFormData] = useState({
         Role: "",
@@ -39,46 +40,54 @@ function SignUp() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
         if (!passwordRegex.test(formData.Password)) {
             setMessage(
                 "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
             );
             setMsgColor("danger");
+        } else if (formData.Password !== verifyPassword) {
+            setMessage("The verified password is incorrect");
+            setMsgColor("warning");
         } else {
-            // Add new user
-            try {
-                let response = await axios.post(`https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/user/`,
-                    formData
-                )
-                setUsers((prevUsers) => [...prevUsers, formData]);
-                setFormData({
-                    Role: "",
-                    ID: "",
-                    ProjectID: projectID,
-                    Name: "",
-                    Email: "",
-                    Password: "",
-                    Favorites: {},
-                    Applied: {},
-                });
-                nav('/login')
-            }
-            catch (error) {
-                console.error("Error adding user:", error);
-                setMsgColor("danger");
-                setMessage("Wrong input");
-            }
+            saveChanges();
         }
-        setLoading(false);
+
+    };
+
+    const saveChanges = async () => {
+        setLoading(true);
+        try {
+            let response = await axios.post(`https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/user/`,
+                formData
+            )
+            setUsers((prevUsers) => [...prevUsers, formData]);
+            setFormData({
+                Role: "",
+                ID: "",
+                ProjectID: projectID,
+                Name: "",
+                Email: "",
+                Password: "",
+                Favorites: {},
+                Applied: {},
+            });
+            nav('/login')
+        }
+        catch (error) {
+            console.error("Error adding user:", error);
+            setMsgColor("danger");
+            setMessage("Wrong input");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
 
         <div className={` d-flex justify-content-center pt-5 container-fluid ${pageTheme}`}>
-            <Card className={`shadow ${cardTheme}`} style={{ width: "30rem", height: "34rem" }}>
+            <Card className={`shadow ${cardTheme}`} style={{ width: "30rem", height: "39rem" }}>
                 <Card.Body>
                     <Card.Title className="text-center">Sign up:</Card.Title>
                     <Form onSubmit={handleSubmit}>
@@ -102,23 +111,40 @@ function SignUp() {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="password" className="mt-4">
-                            <Form.Label>Password:</Form.Label>
-                            <InputGroup>
+                        <div className="row">
+                            <Form.Group controlId="password" className="mt-4 col-6">
+                                <Form.Label>Password:</Form.Label>
+                                <InputGroup>
+                                    <Form.Control
+                                        type={showPassword}
+                                        name="Password"
+                                        value={formData.Password}
+                                        onChange={handleInputChange}
+                                    />
+                                    <Button
+                                        variant="light"
+                                        className="border-top border-bottom border-end"
+                                        onClick={() => setShowPassword((prev) => (prev === "text" ? "password" : "text"))}>
+                                        {showPassword === "password" ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i>}
+                                    </Button>
+                                </InputGroup>
+                            </Form.Group>
+                            <Form.Group controlId="verifyPassword" className="mt-4 col-6 ">
+                                <Form.Label>Verify password:</Form.Label>
                                 <Form.Control
-                                    type={showPassword}
-                                    name="Password"
-                                    value={formData.Password}
-                                    onChange={handleInputChange}
-                                    required
+                                    type="password"
+                                    value={verifyPassword}
+                                    onChange={(e) => setVerifyPassword(e.target.value)}
                                 />
-                                <Button
-                                    variant="light"
-                                    className="border-top border-bottom border-end"
-                                    onClick={() => setShowPassword((prev) => (prev === "text" ? "password" : "text"))}>
-                                    {showPassword === "password" ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i>}
-                                </Button>
-                            </InputGroup>
+                            </Form.Group>
+                        </div>
+                        <Form.Group controlId="role" className="mt-4 offset-3 col-6">
+                            <Form.Label>Role:</Form.Label>
+                            <Form.Select name="Role" value={formData.Role} onChange={handleInputChange}>
+                                <option value="User">User</option>
+                                <option value="Business">Business</option>
+                                <option value="Guest">Guest</option>
+                            </Form.Select>
                         </Form.Group>
                         <Button variant="primary" type="submit" className="mt-4 w-100">
                             Login

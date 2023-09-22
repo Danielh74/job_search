@@ -10,7 +10,7 @@ when you sign up is important to know that your password needs to have at least 
 
 
  *IMPORTANT NOTE!!*
- When you sign up to the site your user's role will be guest if you want to change it you'll have to go to the profile section and edit it yourself.
+ with the API we were given for this projects there is a bug that only the admin user can change the role of the other users or else the default role is guest
 
 
 3. When you get on the site you'll be greated with the home page, where you can scroll through the jobs that are available on the site, search for a specific job in the search bar, or filter through the categories with the categories section in the navigation bar.
@@ -35,3 +35,4 @@ By the way you can always come back to the home page from anywhere by just click
 6. for the admin user:
    Email: a@b.com
    Password: 1234
+
