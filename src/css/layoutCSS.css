@@ -4,7 +4,6 @@
 
     .dropdown-item:hover {
         background-color: lightgray;
-        /* this is for dropdown menu hover background */
     }
 }
 
@@ -21,18 +20,15 @@
     .dropdown button,
     .dropdown-toggle:focus {
         color: white !important;
-        /* this is for dropdown text color */
     }
 
     .dropdown-menu {
         background-color: #2c415c;
-        /* this is for dropdown menu background */
     }
 
     .dropdown-item:hover {
         background-color: #243447;
         color: white !important;
-        /* this is for dropdown menu hover background and text color */
     }
 
     .form-control {

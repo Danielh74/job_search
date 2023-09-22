@@ -19,7 +19,6 @@ function Profile() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     useEffect(() => {
-        console.log(users);
         if (users) {
             setMyUser(users.find((u) => u.Email === loggedInUser.Email));
         }
