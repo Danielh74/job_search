@@ -31,3 +31,7 @@ By the way you can always come back to the home page from anywhere by just click
  - if you're an admin(probably not because I am) you'll have a "User management" options where you can edit and delete users from the site.
 
 5. For your comfort this web site have 2 themes options: Dark option and Light option, you can toggle between them by clicking the sun/moon icon in the right side of the top nav bar.
+
+6. for the admin user:
+   Email: a@b.com
+   Password: 1234
