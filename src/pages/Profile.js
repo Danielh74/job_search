@@ -19,6 +19,7 @@ function Profile() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     useEffect(() => {
+        console.log(users);
         if (users) {
             setMyUser(users.find((u) => u.Email === loggedInUser.Email));
         }
@@ -142,7 +143,7 @@ function Profile() {
                                 <Form.Group controlId="role" className="mt-4 offset-3 col-6">
                                     <Form.Label>Role:</Form.Label>
                                     <Form.Select disabled={myUser.Role === "Admin" ? true : false} name="Role" value={myUser.Role} onChange={handleInputChange}>
-                                        {users.find((user) => user.Role === "Admin") ?
+                                        {users && users.find((user) => user.Role === "Admin") ?
                                             <>
                                                 <option value="User">User</option>
                                                 <option value="Business">Business</option>

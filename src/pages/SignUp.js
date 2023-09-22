@@ -7,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const { pageTheme, cardTheme } = useContext(ThemeContext);
-    const { setLoggedInUser } = useContext(LoginContext);
+    const { setLoggedInUser, users, setUsers } = useContext(LoginContext);
     const [message, setMessage] = useState("Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.");
     const [msgColor, setMsgColor] = useState("warning");
-    const [users, setUsers] = useState([]);
     const projectID = "a3dea4e1-45c5-41da-9a30-3351a1116941";
     const nav = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -71,10 +70,9 @@ function SignUp() {
                 console.error("Error adding user:", error);
                 setMsgColor("danger");
                 setMessage("Wrong input");
-            } finally {
-                setLoading(false);
             }
         }
+        setLoading(false);
     };
 
     return (
@@ -125,13 +123,13 @@ function SignUp() {
                         <Button variant="primary" type="submit" className="mt-4 w-100">
                             Login
                         </Button>
-                        {loading ?
-                            <Container className="d-flex justify-content-center mt-5">
-                                <Spinner animation="border" variant="primary" />
-                            </Container>
-                            : <></>}
                     </Form>
                     {message && <Alert className={`mt-4 text-${msgColor} text-center`} variant={msgColor}>{message}</Alert>}
+                    {loading ?
+                        <Container className="d-flex justify-content-center mt-5">
+                            <Spinner animation="border" variant="primary" />
+                        </Container>
+                        : <></>}
                 </Card.Body>
             </Card>
         </div>
