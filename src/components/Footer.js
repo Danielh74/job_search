@@ -45,14 +45,14 @@ function Footer() {
                 &copy; {new Date().getFullYear()} Hired! - Job Finding Site. All Rights
                 Reserved.
             </p>
-            {loggedInUser ? <nav className={`navbar navbar-expand ${layoutTheme} fixed-bottom p-0`}>
+            {loggedInUser && <nav className={`navbar navbar-expand ${layoutTheme} fixed-bottom p-0`}>
                 <div className="container-fluid">
                     <div className="row collapse navbar-collapse">
                         <ul className="navbar-nav">
                             <li className="nav-item d-flex justify-content-center text-center col-2 offset-1 ">
                                 <small>
                                     <Link className='nav-link' onClick={() => setIsPressed(false)} to="/favorites">
-                                        {favList.length > 0 ? favList.length : <></>} &nbsp;
+                                        {favList.length > 0 && favList.length} &nbsp;
                                         <i className="bi bi-heart-fill"></i>
                                         <br />
                                         <span className=" d-none d-md-block">Favorites</span>
@@ -62,7 +62,7 @@ function Footer() {
                             <li className="nav-item d-flex justify-content-center text-center col-2 offset-2 ">
                                 <small>
                                     <Link className='nav-link' onClick={() => setIsPressed(false)} to="/myapplications">
-                                        {appliedList.length > 0 ? appliedList.length : <></>} &nbsp;
+                                        {appliedList.length > 0 && appliedList.length} &nbsp;
                                         <i className="bi bi-briefcase-fill "></i>
                                         <br />
                                         <span className=" d-none d-md-block">My applications</span>
@@ -82,8 +82,7 @@ function Footer() {
                         </ul>
                     </div>
                 </div>
-            </nav > : <></>
-            }
+            </nav >}
         </>
     );
 }

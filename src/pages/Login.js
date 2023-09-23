@@ -83,11 +83,11 @@ function Login() {
                         <Button variant="primary" type="submit" className="mt-5 w-100">
                             Login
                         </Button>
-                        {loading ?
+                        {loading &&
                             <Container className="d-flex justify-content-center mt-5">
                                 <Spinner animation="border" variant="primary" />
                             </Container>
-                            : <></>}
+                        }
                     </Form>
                     {errorMsg && <Alert className="mt-5 text-danger text-center" variant="danger">{errorMsg}</Alert>}
                 </Card.Body>

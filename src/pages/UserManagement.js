@@ -100,7 +100,7 @@ function UserManagement() {
     return (
         <div className={`full-container ${pageTheme}`}>
             {loggedInUser.Role === "Admin" ? <><h1 className="p-3">Users Management:</h1>
-                {users ? <Table className={`${cardTheme}`} striped bordered hover>
+                {users && <Table className={`${cardTheme}`} striped bordered hover>
                     <thead className={`${cardTheme} text-center`}>
                         <tr>
                             <th className={`${cardTheme}`}>Name</th>
@@ -127,7 +127,7 @@ function UserManagement() {
                             </tr>
                         ))}
                     </tbody>
-                </Table> : <></>}</> : nav('/home')}
+                </Table>}</> : nav('/home')}
 
             <Modal show={showModal} onHide={() => { setShowModal(false); setIsEdit(false); }} >
                 <Container className={`${cardTheme}`}>
@@ -197,11 +197,11 @@ function UserManagement() {
                                             </Form.Select></> : <></>}
                                     </Form.Group>
                                 </div>
-                                {loading ?
+                                {loading &&
                                     <Container className="d-flex justify-content-center mt-5">
                                         <Spinner animation="border" variant="primary" />
                                     </Container>
-                                    : <></>}
+                                }
                                 {message && <Alert className={`mt-4 text-${msgColor} text-center`} variant={msgColor}>{message}</Alert>}
                             </Form>}
                     </Modal.Body>

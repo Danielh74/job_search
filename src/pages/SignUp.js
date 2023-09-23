@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const { pageTheme, cardTheme } = useContext(ThemeContext);
-    const { setLoggedInUser, users, setUsers } = useContext(LoginContext);
+    const { setLoggedInUser, setUsers } = useContext(LoginContext);
     const [message, setMessage] = useState("Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.");
     const [msgColor, setMsgColor] = useState("warning");
     const projectID = "a3dea4e1-45c5-41da-9a30-3351a1116941";
@@ -151,11 +151,11 @@ function SignUp() {
                         </Button>
                     </Form>
                     {message && <Alert className={`mt-4 text-${msgColor} text-center`} variant={msgColor}>{message}</Alert>}
-                    {loading ?
+                    {loading &&
                         <Container className="d-flex justify-content-center mt-5">
                             <Spinner animation="border" variant="primary" />
                         </Container>
-                        : <></>}
+                    }
                 </Card.Body>
             </Card>
         </div>

@@ -83,7 +83,7 @@ function MyCards() {
                 </div>
             </> : <Cards />}
 
-            {modalShow ? <CardFormModal show={modalShow} handleClose={closeModal} role={modalRole} job={newJob} /> : <></>}
+            {modalShow && <CardFormModal show={modalShow} handleClose={closeModal} role={modalRole} job={newJob} />}
         </div >
     );
 }

@@ -106,7 +106,7 @@ function CardFormModal({ show, role, handleClose, job }) {
                                 />
                             </Form.Group>
                             <div className="row">
-                                <Form.Group className={`mb-3 ${selectedCategory === "new" ? "col-6" : ""}`}>
+                                <Form.Group className={`mb-3 ${selectedCategory === "new" && "col-6"}`}>
                                     <Form.Label >Category:</Form.Label>
                                     <Form.Select name="category" value={newJob.Data.category} onChange={handleCategoryChange}>
                                         <option disabled value="" className=" text-secondary">--Select a category--</option>
@@ -181,9 +181,9 @@ function CardFormModal({ show, role, handleClose, job }) {
                     <Button className="me-auto col-auto" variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    {loading ? <Container className="col text-center">
+                    {loading && <Container className="col text-center">
                         <Spinner animation="border" variant="primary" />
-                    </Container> : <></>}
+                    </Container>}
                     {modalRole === "Delete" ? <Button className="col-auto" variant="danger" onClick={() => { handleDelete(newJob); handleClose(); }}>
                         Delete
                     </Button> :

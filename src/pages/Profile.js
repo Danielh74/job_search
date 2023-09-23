@@ -162,11 +162,11 @@ function Profile() {
                             <Button variant="primary" type="submit" className="mt-4 w-100">
                                 Save changes
                             </Button>
-                            {loading ?
+                            {loading &&
                                 <Container className="d-flex justify-content-center mt-5">
                                     <Spinner animation="border" variant="primary" />
                                 </Container>
-                                : <></>}
+                            }
                         </Form>
                         {message && <Alert className={`mt-4 text-${msgColor} text-center`} variant={msgColor}>{message}</Alert>}
                     </Card.Body>

@@ -91,9 +91,9 @@ function NavBar() {
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li><Link className="dropdown-item" onClick={() => setIsPressed(false)} to="/profile">Profile</Link></li>
-                                            {loggedInUser.Role === "Business" || loggedInUser.Role === "Admin" ? <>
+                                            {(loggedInUser.Role === "Business" || loggedInUser.Role === "Admin") &&
                                                 <li><Link className="dropdown-item" onClick={() => setIsPressed(false)} to="/mycards">My cards</Link></li>
-                                            </> : <></>}
+                                            }
                                             {loggedInUser.Role === "Admin" ?
                                                 <li><Link className="dropdown-item" onClick={() => setIsPressed(false)} to={'/usermanagement'}>Users management</Link></li> : <></>}
                                             <li><button className="dropdown-item" onClick={handleLogOut}>Log-out</button></li>
