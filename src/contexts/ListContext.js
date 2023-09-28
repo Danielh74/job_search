@@ -168,10 +168,10 @@ export function ListProvider({ children }) {
         let userApplied = item.Data.whoApplied.find((applied) => applied.Email === loggedInUser.Email);
         if (userApplied) {
             return (
-                <button className="btn btn-dark col-3 offset-2 " onClick={() => removeFromList(selectedItem, "applications")} >Cancel application</button>);
+                <button className="btn btn-dark col-3 offset-2 rounded-5" onClick={() => removeFromList(selectedItem, "applications")} >Cancel application</button>);
         }
         return (
-            <button className="btn btn-success col-3 offset-2" onClick={() => addItems(selectedItem, "applications")} >Apply</button>);
+            <button className="btn btn-success col-3 offset-2 rounded-5" onClick={() => addItems(selectedItem, "applications")} >Apply</button>);
     };
 
     return (

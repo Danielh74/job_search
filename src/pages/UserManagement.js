@@ -8,7 +8,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 function UserManagement() {
 
     const { users, setUsers, loggedInUser } = useContext(LoginContext);
-    const { pageTheme, cardTheme } = useContext(ThemeContext);
+    const { pageTheme, cardTheme, tableTheme } = useContext(ThemeContext);
     const nav = useNavigate();
     const projectID = "a3dea4e1-45c5-41da-9a30-3351a1116941";
     const [bearerToken, setBearerToken] = useState(localStorage.getItem("userToken"));
@@ -98,28 +98,28 @@ function UserManagement() {
     };
 
     return (
-        <div className={`full-container ${pageTheme}`}>
+        <div className={`container-fluid ${pageTheme} pb-1`}>
             {loggedInUser.Role === "Admin" ? <><h1 className="p-3">Users Management:</h1>
-                {users && <Table className={`${cardTheme}`} striped bordered hover>
-                    <thead className={`${cardTheme} text-center`}>
+                {users && <Table className={`${tableTheme}`} striped bordered hover>
+                    <thead className={`${tableTheme} text-center`}>
                         <tr>
-                            <th className={`${cardTheme}`}>Name</th>
-                            <th className={`${cardTheme}`}>Email</th>
-                            <th className={`${cardTheme}`}>Password</th>
-                            <th className={`${cardTheme}`}>Role</th>
-                            <th className={`${cardTheme}`}>Action</th>
+                            <th className={`${tableTheme}`}>Name</th>
+                            <th className={`${tableTheme}`}>Email</th>
+                            <th className={`${tableTheme}`}>Password</th>
+                            <th className={`${tableTheme}`}>Role</th>
+                            <th className={`${tableTheme} col-2`}>Action</th>
                         </tr>
                     </thead>
-                    <tbody className={`${cardTheme}`}>
+                    <tbody className={`${tableTheme} text-center`}>
                         {users.map((user) => (
                             <tr key={user.Email}>
-                                <td className={`${cardTheme}`}>{user.Name}</td>
-                                <td className={`${cardTheme}`}>{user.Email}</td>
-                                <td className={`${cardTheme}`}>{user.Password}</td>
-                                <td className={`${cardTheme}`}>{user.Role}</td>
-                                <td className={`${cardTheme}`}>
+                                <td className={`${tableTheme}`}>{user.Name}</td>
+                                <td className={`${tableTheme}`}>{user.Email}</td>
+                                <td className={`${tableTheme}`}>{user.Password}</td>
+                                <td className={`${tableTheme}`}>{user.Role}</td>
+                                <td className={`${tableTheme}`}>
                                     {user.Role === "Admin" ? <>  <Button variant='warning' onClick={() => handleEdit(user)} >Edit</Button>
-                                        <Button disabled className="ms-1" variant='secondary' onClick={() => { setShowModal(true); setSelectedUser(user); setIsEdit(false); }} >Delete</Button></> : <>
+                                        <Button disabled className="ms-1" variant='secondary'>Delete</Button></> : <>
                                         <Button variant='warning' onClick={() => handleEdit(user)} >Edit</Button>
                                         <Button className="ms-1" variant='danger' onClick={() => { setShowModal(true); setSelectedUser(user); setIsEdit(false); }} >Delete</Button>
                                     </>}

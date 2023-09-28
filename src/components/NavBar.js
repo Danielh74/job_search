@@ -140,7 +140,7 @@ function NavBar() {
                                             <button className="btn text-primary btn-sm nav-link" onClick={() => nav('/login')}><span>Log in</span></button>
                                         </li>
                                         <li className="nav-item mt-1 col-auto">
-                                            <button className=" btn btn-primary mx-2 btn-sm rounded-3" onClick={() => nav('/signup')}><span className=' fw-lighter'>Sign up</span></button>
+                                            <button className=" btn btn-primary mx-2 btn-sm rounded-4" onClick={() => nav('/signup')}><span className=' fw-lighter'>Sign up</span></button>
                                         </li>
                                         <li className="nav-item  col-auto">
                                             <small>

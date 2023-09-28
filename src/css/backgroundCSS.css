@@ -14,3 +14,17 @@
     background-color: #F0F8FF;
     color: black;
 }
+
+.light-table {
+    border-style: solid;
+    border-color: black !important;
+    background-color: #F0F8FF;
+    color: black;
+}
+
+.dark-table {
+    border-style: solid;
+    border-color: #576e8d !important;
+    background-color: #2c415c !important;
+    color: white !important;
+}
