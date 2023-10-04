@@ -59,7 +59,7 @@ function SignUp() {
     const saveChanges = async () => {
         setLoading(true);
         try {
-            let response = await axios.post(`https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/user/`,
+            await axios.post(`https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/user/`,
                 formData
             )
             setUsers((prevUsers) => [...prevUsers, formData]);
