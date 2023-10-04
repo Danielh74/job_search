@@ -86,8 +86,8 @@ function SignUp() {
 
     return (
 
-        <div className={` d-flex justify-content-center pt-5 container-fluid ${pageTheme}`}>
-            <Card className={`shadow ${cardTheme}`} style={{ width: "30rem", height: "39rem" }}>
+        <div className={`container-fluid d-flex justify-content-center pt-5 ${pageTheme}`}>
+            <Card className={`shadow ${cardTheme} rounded-4`} style={{ width: "30rem", height: "39rem" }}>
                 <Card.Body>
                     <Card.Title className="text-center">Sign up:</Card.Title>
                     <Form onSubmit={handleSubmit}>

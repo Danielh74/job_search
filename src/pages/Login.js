@@ -52,47 +52,49 @@ function Login() {
     };
 
     return (
-        <div className={` d-flex justify-content-center pt-5 full-container ${pageTheme}`}>
-            <Card className={`shadow ${cardTheme}`} style={{ width: "30rem", height: "22rem" }}>
-                <Card.Body>
-                    <Card.Title className="text-center">Login:</Card.Title>
-
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mt-4">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                type="email"
-                                name="Email"
-                                placeholder="example@example.com"
-                                value={loginInputs.Email}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mt-4">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                type="password"
-                                name="Password"
-                                placeholder="Enter your password"
-                                value={loginInputs.Password}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-5 w-100">
-                            Login
-                        </Button>
-                        {loading &&
-                            <Container className="d-flex justify-content-center mt-5">
-                                <Spinner animation="border" variant="primary" />
-                            </Container>
-                        }
-                    </Form>
-                    {errorMsg && <Alert className="mt-5 text-danger text-center" variant="danger">{errorMsg}</Alert>}
-                </Card.Body>
-            </Card>
-        </div>
+        <>
+            <div className={`full-container d-flex justify-content-center pt-5 ${pageTheme}`}>
+                <Card className={`shadow ${cardTheme} rounded-4`} style={{ width: "30rem", height: "22rem" }}>
+                    <Card.Body>
+                        <Card.Title className="text-center">Login:</Card.Title>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mt-4">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    name="Email"
+                                    placeholder="example@example.com"
+                                    value={loginInputs.Email}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group className="mt-4">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    name="Password"
+                                    placeholder="Enter your password"
+                                    value={loginInputs.Password}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" className="mt-5 w-100 rounded-5">
+                                Login
+                            </Button>
+                            {loading &&
+                                <Container className="d-flex justify-content-center mt-5">
+                                    <Spinner animation="border" variant="primary" />
+                                </Container>
+                            }
+                        </Form>
+                        {errorMsg && <Alert className="mt-5 text-danger text-center" variant="danger">{errorMsg}</Alert>}
+                    </Card.Body>
+                </Card>
+            </div>
+            <div className={`pt-5 ${pageTheme}`} />
+        </>
     )
 }
 

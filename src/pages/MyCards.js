@@ -54,15 +54,14 @@ function MyCards() {
     }
 
     return (
-        <div className={`container-fluid pt-4 ${pageTheme}`}>
-
+        <div className={`${(items.filter((u) => u.Data.creator === loggedInUser.Email))[0] ? "container-fluid" : "full-container"} pt-4 ${pageTheme}`}>
             {!isPressed ? <> <h1 className="fw-light p-3">My cards:</h1>
-                <button className="btn btn-primary" onClick={() => openModal("Add")}>Create card</button>
+                <button className="btn btn-primary ms-2" onClick={() => openModal("Add")}>Create card</button>
                 <div className="row mt-4">
                     {(items.filter((u) => u.Data.creator === loggedInUser.Email)).map((item) => (
                         <div className="col-7 col-sm-5 col-md-4 col-lg-3 mb-5" key={item.ItemID}>
                             <div className={`${cardTheme} shadow`} >
-                                <img src={item.Data.img} className=" card-img-top rounded-top" alt={item.Data.title} />
+                                <img src={item.Data.img} className=" card-img-top" alt={item.Data.title} />
                                 <div className="card-body m-0 p-2" >
                                     <h5 className='card-title '>{item.Data.title}</h5>
                                     <p className={`card-text `} >{item.Data.description}</p>

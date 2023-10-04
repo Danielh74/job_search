@@ -23,7 +23,7 @@ function Cards({ category }) {
                         </div>
                     </div>
                 </div>
-            ))}</> : <div className=" container-fluid">
+            ))}</> : <div className="container-fluid">
                 <div className="row">
                     <img src={selectedItem.Data.img} className="rounded-4 col-6 col-sm-5 col-md-4 mt-3 ms-5 p-0 " alt={selectedItem.Data.title} />
                     <div className="col-6 offset-1">

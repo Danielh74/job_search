@@ -88,7 +88,7 @@ function CardFormModal({ show, role, handleClose, job }) {
 
     return (
         <Modal show={showModal} onHide={handleClose} >
-            <Container className={`${cardTheme}`}>
+            <Container className={`${cardTheme} rounded`}>
                 <Modal.Header closeButton>
                     <Modal.Title>{modalRole} Card:</Modal.Title>
                 </Modal.Header>
