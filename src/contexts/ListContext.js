@@ -84,7 +84,7 @@ export function ListProvider({ children }) {
 
         if (chosenCategory === "all") {
             try {
-                const response = await axios.post(
+                await axios.post(
                     `https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/item/${projectID}`,
                     itemToAdd,
                     config
@@ -104,7 +104,7 @@ export function ListProvider({ children }) {
                 setAlertText("You have successfully applied to the job!");
             }
             try {
-                const response = await axios.put(
+                await axios.put(
                     `https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/item/${projectID}/${itemToAdd.ItemID}`,
                     itemToAdd,
                     config
@@ -135,7 +135,7 @@ export function ListProvider({ children }) {
             ? { headers: { Authorization: `Bearer ${bearerToken}` } }
             : {};
         try {
-            let response = await axios.put(
+            await axios.put(
                 `https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/item/${projectID}/${item.ItemID}`,
                 newItem,
                 config

@@ -50,7 +50,7 @@ function CardFormModal({ show, role, handleClose, job }) {
             setLoading(true);
             if (modalRole === "Edit") {
                 try {
-                    const response = await axios.put(
+                    await axios.put(
                         `https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/item/${projectID}/${item.ItemID}`,
                         item,
                         config
@@ -75,7 +75,7 @@ function CardFormModal({ show, role, handleClose, job }) {
             : {};
         setLoading(true);
         try {
-            const response = await axios.delete(
+            await axios.delete(
                 `https://gnte7mjwg9.execute-api.us-east-1.amazonaws.com/newdev/item/${projectID}/${item.ItemID}`,
                 config
             );
