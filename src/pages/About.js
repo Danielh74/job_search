@@ -42,7 +42,7 @@ function About() {
             </div>
 
             <div className="row justify-content-center pt-5">
-                <button className="btn btn-primary col-2 " onClick={() => nav('/home')}>Home</button>
+                <button className="btn btn-primary col-2 rounded-5 " onClick={() => nav('/home')}>Home</button>
             </div>
         </div>
     );

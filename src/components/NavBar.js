@@ -69,18 +69,18 @@ function NavBar() {
                                         </ul>
                                     </li>
                                     <li className="nav-item ms-3 col-5 text-center ms-auto">
-                                        <form className=" input-group" onSubmit={handleSubmit}>
+                                        <form className="input-group" onSubmit={handleSubmit}>
                                             <input
-                                                className="form-control "
+                                                className="form-control rounded-start-5"
                                                 type="text"
                                                 placeholder="Search jobs..."
                                                 value={searchValue}
                                                 onChange={handleSearchChange}
                                             />
-                                            <button className="btn btn-light form-button" type="submit">
+                                            <button className="btn btn-light form-button rounded-0 border border-end-0 border-start-0 " type="submit">
                                                 <i className="bi bi-search"></i>
                                             </button>
-                                            <button className="btn btn-light form-button" onClick={handleClear}>
+                                            <button className="btn btn-light form-button rounded-end-5 border border-start-0" onClick={handleClear}>
                                                 <i className="bi bi-x-lg"></i>
                                             </button>
                                         </form>
